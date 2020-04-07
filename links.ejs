@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MengXin001/CDN@1.0.2/css/t.css" type="text/css" media="all">
+<!-- Icarus友链页面我就不加懒加载图片了，或许以后会弄吧 -->
+<div class="pattern-center ">
+  <header class="pattern-header ">
+    <center><h1 class="entry-title">友人帐 | Friends</h1></center>
+  </header>
+</div>
+<div id="content" class="site-content">
+  <p>此处可以添加简介....................................................</p>
+  <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
+    <% if (page.links) { %>
+      <div class="links">
+        <% (page.links||[]).forEach(function (group, index) { %>
+          <h3 class="link-title"><span class="fake-title"><%- index + 1 %>. <%- group.group %></span></h3>
+          <% if (group.desc) { %>
+            <div class="link-description"><%- group.desc %></div>
+          <% } %>
+          <ul class="link-items fontSmooth">
+            <% (group.items||[]).forEach(function (item) { %>
+              <li class="link-item">
+                <a class="link-item-inner effect-apollo" href="<%- item.url %>" title="<%- item.desc %>" target="_blank" rel="friend">
+                  <img class="lazyload" data-src="<%- item.img %>" src="<%- item.img %>">
+                  <span class="sitename">
+                  <%- item.name %></span>
+                  <div class="linkdes">
+                  <%- item.desc %></div>
+                </a>
+              </li>
+            <% }) %>
+          </ul>
+        <% }) %>
+      </div>
+    <% } %>
+    </footer><!-- .entry-footer -->
+  </article>
+
+<!--   <div class="have-toc">
+  </div>
+  <div class="toc-container" style="height: 4886.5px;">
+    <div class="toc">
+      <ol class="toc-list ">
+        <li class="toc-list-item">
+          <a href="#toc-head-4" class="toc-link node-name--H3 ">
+          To 小伙伴们</a>
+        </li>
+      </ol>
+    </div>
+  </div> -->
+</div>
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal"><%= __('article.comments') %></h3>
+        <%- partial('comment/' + get_config('comment.type')) %>
+    </div>
+</div>
